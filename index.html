@@ -1,0 +1,474 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Our Little Weekend 💗</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            min-height: 100vh;
+            font-family: "Arial", sans-serif;
+            color: #63384b;
+
+            background:
+                radial-gradient(circle at 10% 10%, #ffffff 0%, transparent 25%),
+                radial-gradient(circle at 90% 20%, #ffd6e5 0%, transparent 30%),
+                linear-gradient(135deg, #fff5f8, #ffe4ee);
+
+            padding: 25px 15px 50px;
+            overflow-x: hidden;
+        }
+
+        /* Floating hearts */
+
+        .heart {
+            position: fixed;
+            pointer-events: none;
+            opacity: 0.35;
+            animation: floatHeart linear infinite;
+            z-index: 0;
+        }
+
+        .heart:nth-child(1) {
+            left: 8%;
+            top: 80%;
+            animation-duration: 8s;
+            font-size: 20px;
+        }
+
+        .heart:nth-child(2) {
+            left: 25%;
+            top: 90%;
+            animation-duration: 10s;
+            animation-delay: 2s;
+            font-size: 15px;
+        }
+
+        .heart:nth-child(3) {
+            left: 75%;
+            top: 85%;
+            animation-duration: 9s;
+            animation-delay: 1s;
+            font-size: 25px;
+        }
+
+        .heart:nth-child(4) {
+            left: 90%;
+            top: 70%;
+            animation-duration: 11s;
+            animation-delay: 3s;
+            font-size: 17px;
+        }
+
+        @keyframes floatHeart {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0;
+            }
+
+            15% {
+                opacity: 0.4;
+            }
+
+            100% {
+                transform: translateY(-110vh) rotate(25deg);
+                opacity: 0;
+            }
+        }
+
+        /* Main container */
+
+        .container {
+            position: relative;
+            z-index: 2;
+
+            width: 100%;
+            max-width: 720px;
+
+            margin: 0 auto;
+        }
+
+        /* Header */
+
+        .header {
+            text-align: center;
+            padding: 35px 15px 30px;
+        }
+
+        .main-heart {
+            font-size: 60px;
+            display: inline-block;
+
+            animation: heartbeat 1.8s ease-in-out infinite;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% {
+                transform: scale(1);
+            }
+
+            15% {
+                transform: scale(1.12);
+            }
+
+            30% {
+                transform: scale(1);
+            }
+        }
+
+        .header h1 {
+            margin-top: 15px;
+
+            font-family: Georgia, serif;
+            font-size: clamp(34px, 8vw, 52px);
+
+            color: #a93661;
+        }
+
+        .header p {
+            max-width: 520px;
+            margin: 18px auto 0;
+
+            color: #9b6278;
+            font-size: 15px;
+            line-height: 1.8;
+        }
+
+        .tiny-note {
+            margin-top: 12px !important;
+
+            font-size: 12px !important;
+            color: #c0869c !important;
+        }
+
+        /* Intro card */
+
+        .intro-card {
+            background: rgba(255, 255, 255, 0.85);
+
+            border: 1px solid rgba(255, 255, 255, 0.9);
+            border-radius: 30px;
+
+            padding: 28px 25px;
+            margin-bottom: 22px;
+
+            text-align: center;
+
+            box-shadow:
+                0 15px 45px rgba(170, 70, 110, 0.12);
+
+            backdrop-filter: blur(10px);
+        }
+
+        .intro-card h2 {
+            font-family: Georgia, serif;
+            color: #923452;
+            font-size: 25px;
+            margin-bottom: 10px;
+        }
+
+        .intro-card p {
+            color: #a56d83;
+            line-height: 1.7;
+            font-size: 14px;
+        }
+
+        /* Google Form card */
+
+        .form-card {
+            background: rgba(255, 255, 255, 0.9);
+
+            border-radius: 30px;
+
+            padding: 20px;
+
+            box-shadow:
+                0 15px 50px rgba(170, 70, 110, 0.14);
+
+            overflow: hidden;
+        }
+
+        .form-header {
+            text-align: center;
+            padding: 15px 10px 20px;
+        }
+
+        .form-header .icon {
+            font-size: 35px;
+            margin-bottom: 8px;
+        }
+
+        .form-header h2 {
+            font-family: Georgia, serif;
+            font-size: 27px;
+            color: #923452;
+        }
+
+        .form-header p {
+            margin-top: 8px;
+            color: #ae7890;
+            font-size: 13px;
+        }
+
+        /* Google Form iframe */
+
+        .google-form-wrapper {
+            width: 100%;
+            overflow: hidden;
+
+            border-radius: 20px;
+
+            background: white;
+
+            border: 1px solid #f5d8e3;
+        }
+
+        .google-form-wrapper iframe {
+            display: block;
+
+            width: 100%;
+            min-height: 1250px;
+
+            border: none;
+        }
+
+        /* Bottom message */
+
+        .bottom-message {
+            text-align: center;
+
+            padding: 30px 15px 10px;
+
+            color: #ae7188;
+
+            font-size: 13px;
+            line-height: 1.8;
+        }
+
+        .bottom-message .big-heart {
+            font-size: 30px;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        /* Mobile */
+
+        @media (max-width: 600px) {
+
+            body {
+                padding: 15px 10px 35px;
+            }
+
+            .header {
+                padding-top: 25px;
+            }
+
+            .main-heart {
+                font-size: 50px;
+            }
+
+            .header h1 {
+                font-size: 35px;
+            }
+
+            .header p {
+                font-size: 14px;
+            }
+
+            .intro-card {
+                padding: 24px 18px;
+                border-radius: 24px;
+            }
+
+            .form-card {
+                padding: 10px;
+                border-radius: 24px;
+            }
+
+            .form-header {
+                padding: 15px 8px;
+            }
+
+            .form-header h2 {
+                font-size: 24px;
+            }
+
+            .google-form-wrapper {
+                border-radius: 15px;
+            }
+
+            .google-form-wrapper iframe {
+                min-height: 1400px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Floating hearts -->
+
+    <div class="heart">♡</div>
+    <div class="heart">♥</div>
+    <div class="heart">♡</div>
+    <div class="heart">♥</div>
+
+
+    <main class="container">
+
+        <!-- HEADER -->
+
+        <section class="header">
+
+            <div class="main-heart">
+                💗
+            </div>
+
+            <h1>
+                Our Little Weekend
+            </h1>
+
+            <p>
+                Hi baby ♡
+                <br><br>
+
+                I have a very important question for you...
+
+                <br><br>
+
+                What do you want to do with me this weekend?
+            </p>
+
+            <p class="tiny-note">
+                Choose as many as you want. I promise there are no wrong answers 🥺
+            </p>
+
+        </section>
+
+
+        <!-- INTRO -->
+
+        <section class="intro-card">
+
+            <h2>
+                Pick Our Dates 💌
+            </h2>
+
+            <p>
+                I made you a little wishlist of things we could do
+                together on Friday, Saturday & Sunday.
+                <br>
+                Just pick whatever sounds fun to you ♡
+            </p>
+
+        </section>
+
+
+        <!-- GOOGLE FORM -->
+
+        <section class="form-card">
+
+            <div class="form-header">
+
+                <div class="icon">
+                    🌷
+                </div>
+
+                <h2>
+                    Your Weekend Wishlist
+                </h2>
+
+                <p>
+                    Your answers will come straight to me 💗
+                </p>
+
+            </div>
+
+
+            <div class="google-form-wrapper">
+
+                <!--
+                    ==================================================
+                    REPLACE THE URL BELOW WITH YOUR GOOGLE FORM
+                    EMBED URL
+                    ==================================================
+
+                    Google Forms:
+                    Send → Embed <> → Copy iframe
+
+                    Example:
+
+                    https://docs.google.com/forms/d/e/XXXXXXXX/viewform?embedded=true
+                -->
+
+                <iframe
+                    src="YOUR_GOOGLE_FORM_EMBED_URL"
+                    frameborder="0"
+                    marginheight="0"
+                    marginwidth="0">
+
+                    Loading…
+
+                </iframe>
+
+            </div>
+
+        </section>
+
+
+        <!-- BOTTOM -->
+
+        <div class="bottom-message">
+
+            <span class="big-heart">
+                💞
+            </span>
+
+            Made with love, kisses & a questionable amount
+            of planning for one weekend.
+
+            <br>
+
+            <strong>
+                I can't wait to see what you choose ♡
+            </strong>
+
+        </div>
+
+    </main>
+
+
+    <script>
+
+        /*
+         * Tiny interaction:
+         * Add a little "I'm watching you choose 👀" effect
+         * when the Google Form is clicked.
+         */
+
+        const iframe = document.querySelector(".google-form-wrapper iframe");
+
+        iframe.addEventListener("mouseenter", function () {
+            document.querySelector(".main-heart").style.transform =
+                "scale(1.15)";
+        });
+
+        iframe.addEventListener("mouseleave", function () {
+            document.querySelector(".main-heart").style.transform =
+                "scale(1)";
+        });
+
+    </script>
+
+</body>
+</html>
+```
